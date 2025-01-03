@@ -14,9 +14,21 @@ public class Player: MonoBehaviour
 
     void Update()
     {
-        float vertical = Input.GetAxis("Vertical");
+        float vertical = InputManager.GetMovementInput().y;
+        float horizontal = InputManager.GetMovementInput().x;
         transform.Translate(0, 0, velocidade * Time.deltaTime * vertical);
         transform.Rotate(0, rotacao * Time.deltaTime * Input.GetAxis("Horizontal"), 0);
+    
+        if(InputManager.GetFireInput())
+        {
+            Debug.Log("Atirou");
+        }
+
+        if (InputManager.GetRunInput())
+        {
+            Debug.Log("Correu");
+        }
+
     }
             
 }
